@@ -1,0 +1,235 @@
+﻿@model AdminViewModel
+
+@{
+    ViewBag.Title = "Admin DashBoard";
+    int i = 0;
+    int j = 0;
+    int k = 0;
+    int l = 0;
+    int m = 0;
+
+}
+
+<br />
+<!--UnConfirmed Table-->
+<span style="font-size:30px">Unconfirmed Request </span><a asp-controller="home" asp-action="#">Process All</a>
+<table class="table table-danger table-bordered w-100">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Full Name</th>
+            <th>Branch</th>
+            <th>Pastor's Name</th>
+            <th>Need</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+        @foreach (var req in Model.UnConfirmedRequest)
+        {
+            i++;
+            <tr class="table-info">
+                <input hidden value="@req.RequestId" />
+                <th scope="row">@i</th>
+                <td>@req.FullName</td>
+                <td>@req.Branch</td>
+                <td>@req.PastorName</td>
+                <td>@req.Need</td>
+                <td>@req.Phone</td>
+                <td>@req.Address</td>
+                <td>
+                    <a asp-controller="home" asp-action="AdProcessSingleUnconfirmed" asp-route-id="@req.RequestId">Process</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <!--Table body-->
+</table>
+<!--Table-->
+
+
+<br />
+<hr />
+
+<!--Confirmed Table-->
+<span style="font-size:30px">Confirmed Request </span><a asp-controller="home" asp-action="#">Process All</a>
+<table class="table table-warning table-bordered w-100">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Full Name</th>
+            <th>Branch</th>
+            <th>Pastor's Name</th>
+            <th>Need</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+        @foreach (var req in Model.ConfirmedRequest)
+        {
+            j++;
+            <tr class="table-info">
+                <input hidden value="@req.RequestId" />
+                <th scope="row">@j</th>
+                <td>@req.FullName</td>
+                <td>@req.Branch</td>
+                <td>@req.PastorName</td>
+                <td>@req.Need</td>
+                <td>@req.Phone</td>
+                <td>@req.Address</td>
+                <td>
+                    <a asp-controller="home" asp-action="ProcessSingleConfirmed" asp-route-id="@req.RequestId">Process</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <!--Table body-->
+</table>
+<!--Table-->
+
+
+<br />
+<hr />
+
+<!--Treated Table-->
+<span style="font-size:30px">Confirmed Request </span>
+<table class="table table-success table-bordered w-100">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Full Name</th>
+            <th>Branch</th>
+            <th>Pastor's Name</th>
+            <th>Need</th>
+            <th>Phone</th>
+            <th>Address</th>
+            <th>Remark</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+        @foreach (var req in Model.TreatedRequest)
+        {
+            k++;
+            <tr class="table-info">
+                <input hidden value="@req.RequestId" />
+                <th scope="row">@k</th>
+                <td>@req.FullName</td>
+                <td>@req.Branch</td>
+                <td>@req.PastorName</td>
+                <td>@req.Need</td>
+                <td>@req.Phone</td>
+                <td>@req.Address</td>
+                <td>
+                    Done
+                </td>
+            </tr>
+        }
+    </tbody>
+    <!--Table body-->
+</table>
+<!--Table-->
+
+
+<br />
+<br />
+<h2>Supply Tables</h2>
+<hr />
+
+<!--Pending Supply Table-->
+<span style="font-size:30px">Pending Supply </span><a asp-controller="home" asp-action="#">Process All</a>
+<table class="table table-danger table-bordered w-100">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Full Name</th>
+            <th>Need</th>
+            <th>Details</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Action</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+        @foreach (var sup in Model.PendingSupply)
+        {
+            l++;
+            <tr class="table-info">
+                <input hidden value="@sup.SupplyId" />
+                <th scope="row">@l</th>dotnet watch
+                <td>@sup.FullName</td>
+                <td>@sup.Need</td>
+                <td>@sup.NeedDetails</td>
+                <td>@sup.Phone</td>
+                <td>@sup.Email</td>
+                <td>@sup.Address</td>
+                <td>
+                    <a asp-controller="home" asp-action="ProcessSingleSupply" asp-route-id="@sup.SupplyId">Process</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+    <!--Table body-->
+</table>
+<!--Table-->
+<!--Treated Supply Table-->
+<span style="font-size:30px">Treated Supply </span>
+<table class="table table-success table-bordered w-100">
+
+    <!--Table head-->
+    <thead>
+        <tr>
+            <th>No</th>
+            <th>Full Name</th>
+            <th>Need</th>
+            <th>Details</th>
+            <th>Phone</th>
+            <th>Email</th>
+            <th>Address</th>
+            <th>Remark</th>
+        </tr>
+    </thead>
+    <!--Table head-->
+    <!--Table body-->
+    <tbody>
+        @foreach (var sup in Model.TreatedSupply)
+        {
+            m++;
+            <tr class="table-info">
+                <input hidden value="@sup.SupplyId" />
+                <th scope="row">@m</th>
+                <td>@sup.FullName</td>
+                <td>@sup.Need/td>
+                <td>@sup.NeedDetails</td>
+                <td>@sup.Phone</td>
+                <td>@sup.Email</td>
+                <td>@sup.Address</td>
+                <td>
+                    Done
+                </td>
+            </tr>
+        }
+    </tbody>
+    <!--Table body-->
+</table>
+<!--Table-->

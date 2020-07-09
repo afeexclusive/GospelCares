@@ -1,0 +1,66 @@
+﻿@model CreateSupplyViewModel
+
+@{
+    ViewBag.Title = "Give Help";
+
+}
+
+<h1>Register Your Help Here</h1>
+
+<div>
+    <form asp-controller="Home" asp-action="CreateSupply" method="post">
+        <div class="form-group">
+            <label asp-for="FullName"></label>
+            <input class="form-control" asp-for="FullName" />
+            <span asp-validation-for="FullName" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email"></label>
+            <input class="form-control" asp-for="Email" />
+            <span asp-validation-for="Email" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Need"></label>
+            <select id="needforhelp" class="form-control" asp-for="Need" asp-items="Html.GetEnumSelectList<NeedItems>();">
+                <option>Select Need</option>
+            </select>
+            <span asp-validation-for="Need" class="text-danger"></span>
+        </div>
+
+        <div id="accountDetails" class="form-group">
+            <label> <b>Account Details:</b></label> <br />
+            <span>You can make bank transfer to:</span>
+            <label>0123456789(First Bank)</label>
+            <select id="selectbank" class="form-control" asp-items="Html.GetEnumSelectList<BankNames>();">
+                <option value="value">Select Bank</option>
+            </select>
+            <label id="non-select"><span><b>Transfer Code:</b></span> <span>&nbsp; Dial &nbsp;</span><b><span id="codedisplay"></span></b><span>&nbsp; and follow the instructions</span> </label>
+            
+        </div>
+
+        <div class="form-group">
+            <label asp-for="NeedDetails"></label>
+            <input class="form-control" asp-for="NeedDetails" />
+            <span asp-validation-for="NeedDetails" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Phone"></label>
+            <input class="form-control" asp-for="Phone" />
+            <span asp-validation-for="Phone" class="text-danger"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Address"></label>
+            <input class="form-control" asp-for="Address" />
+            <span asp-validation-for="Address" class="text-danger"></span>
+        </div>
+
+        <div class="m-4">
+            <button type="submit" class=" btn btn-primary">Give</button>
+        </div>
+
+    </form>
+</div>

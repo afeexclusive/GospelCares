@@ -1,0 +1,91 @@
+﻿@using Microsoft.AspNetCore.Identity
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+<ul class="navbar-nav">
+    @if (SignInManager.IsSignedIn(User))
+    {
+
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="auth" asp-action="ad" data-target=".adminmodal" data-toggle="modal">Admin Area</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-controller="auth" asp-action="pa" data-target=".pastormodal" data-toggle="modal">Pastors Area</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Register">Register a User</a>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+        </li>
+        <li class="nav-item">
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link text-dark">Logout</button>
+            </form>
+        </li>
+
+    }
+    else
+    {
+
+        <li class="nav-item">
+            <a class="nav-link text-dark" asp-area="Identity" asp-page="/Account/Login">Login</a>
+        </li>
+    }
+</ul>
+
+
+<div class="modal fade adminmodal" tabindex="-1" role="dialog" aria-labelledby="addPage" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-danger text-center" id="exampleModalLabel">Admin Authorization</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> <br />
+            </div>
+
+            <div class="container">
+                <h2>Enter your Pass Code here</h2>
+                <div class="form-group">
+                    <input type="text" id="txtcode" class="form-control" /> <br />
+                    <button id="valbtn" class="btn btn-info form-control">Validate</button> <br /> <br />
+                    <a asp-controller="home" asp-action="adminview"><button id="adminpass" style="display:none" class="btn btn-danger form-control">Pass</button></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div class="modal fade pastormodal" tabindex="-1" role="dialog" aria-labelledby="addPage" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h6 class="modal-title text-danger text-center" id="exampleModalLabel">Pastor Authorization</h6>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button> <br />
+            </div>
+
+            <div class="container">
+                <h2>Enter your Pass Code here</h2>
+                <div class="form-group">
+                    <input type="text" id="pastortxtcode" class="form-control" /> <br />
+                    <button id="pastvalbtn" class="btn btn-info form-control">Validate</button> <br /> <br />
+                    <a asp-controller="home" asp-action="pastorsview"><button id="pastorpass" style="display:none" class="btn btn-danger form-control">Pass</button></a>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+
