@@ -13,6 +13,7 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using GospelCares.Models;
+using GospelCares.Data.DataInitializer;
 
 namespace GospelCares
 {
@@ -42,7 +43,7 @@ namespace GospelCares
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, UserManager<IdentityUser> userManager, RoleManager<IdentityRole> roleManager)//*********
         {
             if (env.IsDevelopment())
             {
@@ -61,6 +62,9 @@ namespace GospelCares
             app.UseRouting();
 
             app.UseAuthentication();
+
+           //************************************************************************************** UserAndRoleDataInitializer.SeedData(userManager, roleManager);
+
             app.UseAuthorization();
 
             app.UseEndpoints(endpoints =>
