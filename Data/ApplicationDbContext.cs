@@ -20,6 +20,8 @@ namespace GospelCares.Data
         public DbSet<EventReport> EventReports { get; set; }
         public DbSet<Event> Events { get; set; }
         public DbSet<TermlyDue> TermlyDues  { get; set; }
-        public DbSet<GospelCares.Models.ForIscholar.Payment> Payment { get; set; }
+        public DbSet<Payment> Payment { get; set; }
+        public DbSet<CounsellingQuestion> CounsellingQuestion { get; set; }
+        public DbSet<GospelCares.Models.ForIscholar.CounsellingReply> CounsellingReply { get; set; }
     }
 }
